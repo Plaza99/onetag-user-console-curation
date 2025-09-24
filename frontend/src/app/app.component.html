@@ -1,0 +1,32 @@
+<div class="app-container">
+  <!-- Header -->
+  <header class="app-header">
+    <h1>{{ title }}</h1>
+  </header>
+  <br>
+  
+  <div class="container">
+    <!-- Tweet Creation Form -->
+    <div class="form-section mb-3">
+      <app-tweet-form (tweetCreated)="onTweetCreated($event)"></app-tweet-form>
+    </div>
+    <br>
+    <!-- Error Message -->
+    <div *ngIf="errorMessage && !loading" class="error-section mb-3">
+      <div class="error-card">
+        <p>{{ errorMessage }}</p>
+        <button class="retry-button" (click)="retryLoadTweets()">
+          Retry
+        </button>
+      </div>
+    </div>
+    
+    <!-- Tweet List -->
+    <div class="tweets-section">
+      <app-tweet-list 
+        [tweets]="tweets" 
+        [loading]="loading">
+      </app-tweet-list>
+    </div>
+  </div>
+</div>

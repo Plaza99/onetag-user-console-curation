@@ -1,0 +1,51 @@
+.app-container {
+  min-height: 100vh;
+  background-color: #fafafa;
+}
+
+.app-header {
+  background: linear-gradient(45deg, #3f51b5, #2196f3);
+  color: white;
+  padding: 24px 0;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.app-header h1 {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 400;
+}
+
+.error-section {
+  margin-bottom: 24px;
+}
+
+.error-card {
+  background-color: #ffebee;
+  border: 1px solid #f44336;
+  border-radius: 8px;
+  padding: 16px;
+  text-align: center;
+}
+
+.error-card p {
+  color: #d32f2f;
+  margin: 0 0 16px 0;
+}
+
+.retry-button {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.retry-button:hover {
+  background-color: #d32f2f;
+}

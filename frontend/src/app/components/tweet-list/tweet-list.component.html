@@ -1,0 +1,28 @@
+<div class="tweets-container">
+  <div class="section-header">
+    <h2>Recent Tweets</h2>
+  </div>
+  
+  <div *ngIf="loading" class="loading-state">
+    <div class="loading-spinner"></div>
+    <p>Loading tweets...</p>
+  </div>
+  
+  <div *ngIf="!loading && tweets.length === 0" class="empty-state">
+    <div class="empty-icon">📝</div>
+    <h3>No tweets yet</h3>
+    <p>Be the first to share something!</p>
+  </div>
+  
+  <div *ngIf="!loading && tweets.length > 0" class="tweet-list">
+    <div *ngFor="let tweet of sortedTweets; trackBy: trackByTweetId" class="tweet-card">
+      <div class="tweet-header">
+        <div class="tweet-author">{{ tweet.author }}</div>
+        <div class="tweet-date">{{ tweet.date }}</div>
+      </div>
+      <div class="tweet-content">
+        <p class="tweet-message">{{ tweet.message }}</p>
+      </div>
+    </div>
+  </div>
+</div>

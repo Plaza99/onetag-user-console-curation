@@ -1,0 +1,59 @@
+<div class="tweet-form-card">
+  <div class="card-header">
+    <h2>What's happening?</h2>
+  </div>
+  
+  <form (ngSubmit)="onSubmit()" #tweetForm="ngForm" class="tweet-form">
+    <div class="form-field">
+      <label for="author" class="field-label">Author</label>
+      <input
+        type="text"
+        id="author"
+        name="author"
+        [(ngModel)]="tweetRequest.author"
+        class="form-input"
+        [class.error]="authorError"
+        placeholder="Enter your name"
+        maxlength="50"
+        required
+      />
+      <div *ngIf="authorError" class="error-text">{{ authorError }}</div>
+    </div>
+
+    <div class="form-field">
+      <label for="message" class="field-label">Message</label>
+      <textarea
+        id="message"
+        name="message"
+        [(ngModel)]="tweetRequest.message"
+        class="form-textarea"
+        [class.error]="messageError"
+        placeholder="What's on your mind?"
+        rows="4"
+        maxlength="280"
+        required
+      ></textarea>
+      <div class="character-counter" 
+           [class.warning]="remainingCharacters < 20" 
+           [class.error]="remainingCharacters < 0">
+        {{ remainingCharacters }} characters remaining
+      </div>
+      <div *ngIf="messageError" class="error-text">{{ messageError }}</div>
+    </div>
+
+    <div *ngIf="errorMessage" class="error-text global-error">
+      {{ errorMessage }}
+    </div>
+
+    <div class="form-actions">
+      <button
+        type="submit"
+        class="submit-button"
+        [disabled]="!tweetForm.valid || isSubmitting || authorError || messageError"
+      >
+        <span *ngIf="isSubmitting" class="loading-spinner"></span>
+        {{ isSubmitting ? 'Posting...' : 'Tweet' }}
+      </button>
+    </div>
+  </form>
+</div>
